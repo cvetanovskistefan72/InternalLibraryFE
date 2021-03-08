@@ -1,0 +1,11 @@
+.results-badge{
+    font-size: 1.4rem!important;
+    height: 20px;
+    font-weight: bold;
+    color: #145a32;
+    padding: 5px;
+ 
+}
+.results{
+    padding-top: 10px;
+}
