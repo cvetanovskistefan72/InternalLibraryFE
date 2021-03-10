@@ -1,23 +1,37 @@
-import React from 'react'
+import React, { useState,useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHistory,faHome,faArchive,faUserCog,faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-import {NavLink} from 'react-router-dom'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { Link, NavLink } from 'react-router-dom'
+import { NavbarContext } from '../../context/NavbarContextProvider'
+import Logo from '../../img/logo.png'
+
 const Navbar = () => {
+    const { navState } = useContext(NavbarContext)
+    
     return (
 
         <nav>
-            <div class="nav-wrapper">
+            <div className="nav-wrapper">
                 <div className="container">
-                    <a href="#" class="brand-logo left">Logo</a>
-                    <ul id="nav-mobile" class="right">
-                        <li><NavLink to="/"><FontAwesomeIcon icon={faHome}/></NavLink></li>
-                        <li><NavLink to="/resources"><FontAwesomeIcon icon={faArchive} /></NavLink></li>
-                        <li><NavLink to="/history"><FontAwesomeIcon icon={faHistory} /></NavLink></li>
-                        <li><a><FontAwesomeIcon icon={faUserCog} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faSignOutAlt} /></a></li>
+                    <Link to="/" className="brand-logo left">
                         
+                        <img src={Logo} style={{ marginTop:'-15px'}}height='100px' alt=""/>
+                    </Link>
+                    <ul id="nav-mobile" className="right">
+                        {
+                            navState.map((link) =>
+                            (<li className={link.active && "nav-active"}>
+                                <NavLink to={link.path}>
+                                <FontAwesomeIcon
+                                    style={link.active ? { color: '#222222' } : { color: 'white' }}
+                                    icon={link.icon} />
+                                </NavLink></li>)
+                            )
+                        }
+                        <li><a><FontAwesomeIcon icon={faSignOutAlt} /></a></li>
+
                     </ul>
-               </div>
+                </div>
             </div>
         </nav>
 
@@ -25,3 +39,5 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+

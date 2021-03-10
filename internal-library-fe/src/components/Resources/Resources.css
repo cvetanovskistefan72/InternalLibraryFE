@@ -1,5 +1,5 @@
 .resources-page{
-   padding-top: 50px;
+   padding-top: 70px;
 }
 .resources-table thead{
     background-color: #222222;
@@ -9,4 +9,11 @@
     display: flex;
     justify-content: space-between;
     padding: 5px;
+     
 }
+ 
+.btn-group button{
+    margin:3px
+}
+ 
+ 

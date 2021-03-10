@@ -1,3 +1,33 @@
-@import './components/Resources/Resources.css';
-@import './components/Navbar/Navbar.css';
-@import './components/Reusable/Reusable.css';
+@import "./components/Resources/Resources.css";
+@import "./components/Navbar/Navbar.css";
+@import "./components/Reusable/Reusable.css";
+@import "./components/Modal/Modal.css";
+@import "./components/Modal/ModalComponents/ModalComponents.css";
+@import "./components/Forms/CreateResource.css";
+
+.btn:hover {
+  background-color: white;
+  color: black;
+}
+.btn:focus {
+  background-color: white;
+  color: black;
+}
+.create {
+  background-color: #01579b;
+}
+.delete {
+  background-color: #b71c1c;
+}
+.add {
+  background-color: #1b5e20;
+}
+.edit {
+  background-color: #01579b;
+}
+.info {
+  background-color: #f57f17;
+}
+.cancel {
+  background-color: #222222;
+}

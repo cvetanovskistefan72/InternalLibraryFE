@@ -1,11 +1,44 @@
+/*RESULTS*/
+
 .results-badge{
-    font-size: 1.4rem!important;
+     
     height: 20px;
     font-weight: bold;
     color: #145a32;
     padding: 5px;
+        font-size: 1.1rem;
  
 }
+ 
 .results{
-    padding-top: 10px;
+    padding-top: 15px;
+}
+
+
+/*TOOLTIP*/
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+ 
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+   font-size: 0.65rem;
+   font-weight: bold;
+  margin-top: -30px;
+ 
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

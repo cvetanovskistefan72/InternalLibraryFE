@@ -1,0 +1,25 @@
+.overlay{
+    opacity: 0.96;
+    background-color:#00000080;;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    
+}
+.modal-2{
+    position: fixed;
+    z-index: 10;
+    padding:10px    ;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: transparent;
+    
+}

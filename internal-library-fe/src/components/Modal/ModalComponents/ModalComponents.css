@@ -1,0 +1,43 @@
+.delete-modal{
+    background-color: white;
+    width: 300px;
+    padding: 10px;
+}
+
+.delete-modal-upper{
+    display: flex;
+    justify-content: flex-end;
+}
+.delete-modal-middle{
+    display: flex;
+    justify-content: center;
+     margin: 10px;
+}
+.delete-modal-bottom{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.details-modal{
+    width: 400px;
+}
+.details-modal-upper{
+    display: flex;
+    justify-content: flex-end;
+}
+ 
+.card{
+    padding: 10px;
+}
+.card-content{
+      padding: 14px!important;
+}
+.card-action{
+    display: flex;
+    justify-content: flex-end;
+}
+.card-action button{
+    margin: 3px;
+}
+ 
