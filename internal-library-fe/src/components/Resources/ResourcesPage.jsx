@@ -4,7 +4,8 @@ import { DataContext } from '../../context/DataContextProvider'
 import { ModalContext } from '../../context/ModalContextProvider'
 import { NavbarContext } from '../../context/NavbarContextProvider'
 import Modal from '../Modal/Modal'
-import DeleteModalComponent from '../Modal/ModalComponents/DeleteModalComponent'
+import DeleteModal from '../Modal/ModalComponents/DeleteModal'
+import EditResource from '../Modal/ModalComponents/EditResource'
 import SeeDetails from '../Modal/ModalComponents/SeeDetails'
 import Pagination from '../Reusable/Pagination'
 import Results from '../Reusable/Results'
@@ -15,7 +16,7 @@ const ResourcesPage = () => {
 
     //CONTEXT
     const { data, getData } = useContext(DataContext)
-    const { deleteModal, setDeleteModal, detailsModal,setDetailsModal } = useContext(ModalContext)
+    const { deleteModal, setDeleteModal, detailsModal,setDetailsModal, editModal, setEditModal } = useContext(ModalContext)
     const { setActiveNavLink } = useContext(NavbarContext)
 
     //STATE
@@ -35,7 +36,7 @@ const ResourcesPage = () => {
                 {
                     deleteModal && (
                         <Modal setDeleteModal={setDeleteModal}>
-                            <DeleteModalComponent
+                            <DeleteModal
                                 deleteModal={deleteModal}
                                 setDeleteModal={setDeleteModal}
                                 deleteId={deleteId}
@@ -54,6 +55,17 @@ const ResourcesPage = () => {
                         </Modal>
                     )
                 }
+                {
+                    editModal && (
+                        <Modal>
+                            <EditResource
+                                getData={getData}
+                                editModal={editModal}
+                                setEditModal={setEditModal}
+                                resource={resource}/>
+                        </Modal>
+                    )
+                }
             </div>
             <div className="resources-page-middle">
                 <ResourcesTable
@@ -62,6 +74,7 @@ const ResourcesPage = () => {
                     setDeleteId={setDeleteId}
                     setDetailsModal={setDetailsModal}
                     setResource={setResource}
+                    setEditModal={setEditModal}
                     />
             </div>
             <div className="resources-page-bottom">

@@ -15,7 +15,27 @@ const ResourcesTable = ({
   setDeleteId,
   setDetailsModal,
   setResource,
+  setEditModal
 }) => {
+
+  const colorType = (res)=>{
+    let color;
+    if(res.type === "Book"){
+      color = '#b71c1c'
+    }
+    if(res.type === "CD"){
+      color = '#01579b'
+    }
+    if(res.type === "Magazine"){
+      color = '#1b5e20'
+    }
+    if(res.type === "Video Tape"){
+      color = '#f57f17'
+    }
+
+    return color
+  }
+
   return (
     <div className="resources-table">
       <table className="striped centered">
@@ -25,6 +45,7 @@ const ResourcesTable = ({
               Id
             </th>
             <th>Type</th>
+            <th></th>
             <th>Name</th>
             <th>Description</th>
             <th>Quantity</th>
@@ -39,6 +60,9 @@ const ResourcesTable = ({
                 {res.id}
               </td>
               <td>{res.type}</td>
+              <td>
+                <div style={{backgroundColor:`${colorType(res)}`}} className="color-type"></div>
+              </td>
               <td>{res.name}</td>
               <td>{res.description.slice(0, 50)}...</td>
               <td>{res.quantity}</td>
@@ -60,7 +84,10 @@ const ResourcesTable = ({
                     <FontAwesomeIcon icon={faPlus} />
                   </button>
 
-                  <button className="btn edit tooltip">
+                  <button onClick={()=>{
+                    setResource(res);
+                    setEditModal(true)
+                  }} className="btn edit tooltip">
                     <Tooltip message="Edit" />
                     <FontAwesomeIcon icon={faPencilAlt} />
                   </button>
@@ -86,3 +113,5 @@ const ResourcesTable = ({
 };
 
 export default ResourcesTable;
+ 
+

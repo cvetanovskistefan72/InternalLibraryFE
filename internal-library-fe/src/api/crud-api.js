@@ -32,3 +32,15 @@ export const createResource = async (resource)=> {
 
     return response
 }
+
+export const editResource = async (resource)=> {
+    let response = {}
+    await axios.put(`${URL}/resource`, resource)
+        .then((resp) => {
+          
+    }).catch((error) => {
+        response = error.response
+    })
+
+    return response
+}

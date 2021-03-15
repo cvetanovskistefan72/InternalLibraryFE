@@ -1,13 +1,17 @@
+
+
+/*CLOSE MODAL SECTION*/
+.close-modal-upper{
+    display: flex;
+    justify-content: flex-end;
+}
+/*DELETE MODAL*/
 .delete-modal{
     background-color: white;
     width: 300px;
     padding: 10px;
 }
 
-.delete-modal-upper{
-    display: flex;
-    justify-content: flex-end;
-}
 .delete-modal-middle{
     display: flex;
     justify-content: center;
@@ -19,13 +23,12 @@
     margin: 20px;
 }
 
+
+/*DETAILS MODAL*/
 .details-modal{
     width: 400px;
 }
-.details-modal-upper{
-    display: flex;
-    justify-content: flex-end;
-}
+ 
  
 .card{
     padding: 10px;
@@ -39,5 +42,77 @@
 }
 .card-action button{
     margin: 3px;
+}
+
+
+/*EDIT MODAL*/
+.edit-resource{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    background-color: white;
+}
+.edit-header{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+.edit-header h4{
+    margin: 15px;
+}
+.edit-form{
+    box-shadow: 0px 0px 5px -1px #4d4d4d;
+    width: 400px;
+}
+.edit-body{
+    padding: 20px;
+}
+.edit-button{
+    width: 100%;
+    background-color: #01579b;
+}
+
+.edit-button:hover{
+    background-color: #01579b!important;
+    color: white!important;
+}
+.edit-button:focus{
+     background-color: #01579b!important;
+     color: white!important;
+}
+.error-message{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 0.7rem;
+}
+.error-message span{
+   font-weight: bold;
+   color: #b71c1c;
+}
+.edit-back-section{
+    display: flex;
+    justify-content: center;
+}
+.edit-back-button{
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#edit-select{
+   border-bottom: none;
+}
+#edit-select:focus{
+      border-bottom: none!important;
+}
+
+#edit-select:focus {
+  border-bottom: none!important;
+  box-shadow: none!important;
+}
+
+input:focus {
+  border-bottom: black!important;
+  box-shadow: black;
 }
  

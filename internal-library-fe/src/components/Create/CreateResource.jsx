@@ -3,8 +3,9 @@ import { CREATE_PAGE_ID } from '../../config/config'
 import { NavbarContext } from '../../context/NavbarContextProvider'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { createResource } from '../../api/crud-api';
 import { Link } from 'react-router-dom';
+import { createResource } from '../../api/crud-api';
+ 
 
 const CreateResource = ({ history }) => {
     const { setActiveNavLink } = useContext(NavbarContext)

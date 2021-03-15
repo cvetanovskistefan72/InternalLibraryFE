@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import ResourcesPage from '../components/Resources/ResourcesPage'
 import HomePage from '../components/Home/HomePage'
 import HistoryPage from '../components/History/HistoryPage'
-import CreateResource from '../components/Forms/CreateResource'
+import CreateResource from '../components/Create/CreateResource'
 
 const Main = () => {
     return (

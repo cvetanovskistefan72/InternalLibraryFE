@@ -3,7 +3,7 @@
 @import "./components/Reusable/Reusable.css";
 @import "./components/Modal/Modal.css";
 @import "./components/Modal/ModalComponents/ModalComponents.css";
-@import "./components/Forms/CreateResource.css";
+@import "./components/Create/CreateResource.css";
 
 .btn:hover {
   background-color: white;
