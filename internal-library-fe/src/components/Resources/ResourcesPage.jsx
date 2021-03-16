@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { RESOURCES_PAGE_ID } from '../../config/config'
+import { AuthorsContext } from '../../context/AuthorsContextProvider'
 import { DataContext } from '../../context/DataContextProvider'
 import { ModalContext } from '../../context/ModalContextProvider'
 import { NavbarContext } from '../../context/NavbarContextProvider'
@@ -18,6 +19,7 @@ const ResourcesPage = () => {
     const { data, getData } = useContext(DataContext)
     const { deleteModal, setDeleteModal, detailsModal,setDetailsModal, editModal, setEditModal } = useContext(ModalContext)
     const { setActiveNavLink } = useContext(NavbarContext)
+    const { getAuthors } = useContext(AuthorsContext)
 
     //STATE
     const [deleteId, setDeleteId] = useState()
@@ -27,6 +29,7 @@ const ResourcesPage = () => {
 
     useEffect(() => {
         getData()
+        getAuthors()
         setActiveNavLink(RESOURCES_PAGE_ID)
     }, [])
     

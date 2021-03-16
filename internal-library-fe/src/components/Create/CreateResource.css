@@ -31,6 +31,21 @@
      background-color: #01579b!important;
      color: white!important;
 }
+.MuiAutocomplete-inputRoot[class*="MuiFilledInput-root"]{
+    background-color: white!important;
+}
+
+#create-multiple{
+    border-bottom: none;
+ }
+ 
+ #create-multiple:focus {
+   border-bottom: none!important;
+   box-shadow: none!important;
+ }
+#create-multiple{
+    background-color: white!important;
+}
 .error-message{
     display: flex;
     justify-content: flex-start;
@@ -51,9 +66,6 @@
 
 #create-select{
    border-bottom: none;
-}
-#create-select:focus{
-      border-bottom: none!important;
 }
 
 #create-select:focus {

@@ -6,6 +6,10 @@ import {
   faPlus,
   faUndoAlt,
   faInfo,
+  faCompactDisc,
+  faNewspaper,
+  faTape,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../Reusable/Tooltip";
 
@@ -15,26 +19,25 @@ const ResourcesTable = ({
   setDeleteId,
   setDetailsModal,
   setResource,
-  setEditModal
+  setEditModal,
 }) => {
+  const colorType = (res) => {
+    let type;
+    if (res.type === "Book") {
+      type = { icon: faBook, color: "#b71c1c" };
+    }
+    if (res.type === "CD") {
+      type = { icon: faCompactDisc, color: "#01579b" };
+    }
+    if (res.type === "Magazine") {
+      type = { icon: faNewspaper, color: "#1b5e20" };
+    }
+    if (res.type === "Video Tape") {
+      type = { icon: faTape, color: "#f57f17" };
+    }
 
-  const colorType = (res)=>{
-    let color;
-    if(res.type === "Book"){
-      color = '#b71c1c'
-    }
-    if(res.type === "CD"){
-      color = '#01579b'
-    }
-    if(res.type === "Magazine"){
-      color = '#1b5e20'
-    }
-    if(res.type === "Video Tape"){
-      color = '#f57f17'
-    }
-
-    return color
-  }
+    return type;
+  };
 
   return (
     <div className="resources-table">
@@ -47,6 +50,7 @@ const ResourcesTable = ({
             <th>Type</th>
             <th></th>
             <th>Name</th>
+            <th>Authors / Editors</th>
             <th>Description</th>
             <th>Quantity</th>
             <th style={{ width: "30%" }}>Action</th>
@@ -61,9 +65,23 @@ const ResourcesTable = ({
               </td>
               <td>{res.type}</td>
               <td>
-                <div style={{backgroundColor:`${colorType(res)}`}} className="color-type"></div>
+                <FontAwesomeIcon
+                  style={{ color: colorType(res).color, fontSize: "1.5rem" }}
+                  icon={colorType(res).icon}
+                />
               </td>
               <td>{res.name}</td>
+              <td style={{ width: "20%" }}>
+                {" "}
+                {res.authors.map((author) => (
+                  <span
+                    style={{ margin: "1px" }}
+                    key={author.id}
+                    class="new badge blue"
+                    data-badge-caption={author.name}
+                  ></span>
+                ))}
+              </td>
               <td>{res.description.slice(0, 50)}...</td>
               <td>{res.quantity}</td>
               <td>
@@ -84,10 +102,13 @@ const ResourcesTable = ({
                     <FontAwesomeIcon icon={faPlus} />
                   </button>
 
-                  <button onClick={()=>{
-                    setResource(res);
-                    setEditModal(true)
-                  }} className="btn edit tooltip">
+                  <button
+                    onClick={() => {
+                      setResource(res);
+                      setEditModal(true);
+                    }}
+                    className="btn edit tooltip"
+                  >
                     <Tooltip message="Edit" />
                     <FontAwesomeIcon icon={faPencilAlt} />
                   </button>
@@ -113,5 +134,3 @@ const ResourcesTable = ({
 };
 
 export default ResourcesTable;
- 
-

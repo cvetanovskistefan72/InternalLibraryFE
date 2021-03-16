@@ -3,7 +3,7 @@ import { URL } from '../config/config'
 
 export const getDataApi = async () => {
    let response = {}
-    await axios.get(`${URL}/resource`)
+    await axios.get(`${URL}/resources`)
         .then((resp) => {
             response=resp
         }).catch((err) => {
@@ -13,7 +13,7 @@ export const getDataApi = async () => {
 }
 
 export const deleteResource = async (id) => {
-    await axios.delete(`${URL}/resource/${id}`)
+    await axios.delete(`${URL}/resources/${id}`)
         .then((resp) => {
         console.log(resp)
     }).catch((err) => {
@@ -23,7 +23,7 @@ export const deleteResource = async (id) => {
 
 export const createResource = async (resource)=> {
     let response = {}
-    await axios.post(`${URL}/resource`, resource)
+    await axios.post(`${URL}/resources`, resource)
         .then((resp) => {
           
     }).catch((error) => {
@@ -35,11 +35,26 @@ export const createResource = async (resource)=> {
 
 export const editResource = async (resource)=> {
     let response = {}
-    await axios.put(`${URL}/resource`, resource)
+    await axios.put(`${URL}/resources`, resource)
         .then((resp) => {
           
     }).catch((error) => {
         response = error.response
+    })
+
+    return response
+}
+
+
+//AUTHORS
+
+export const getAuthorsData= async ()=>{
+    let response;
+    await axios.get(`${URL}/authors`)
+    .then((resp)=>{
+        response=resp
+    }).catch((err)=>{
+        console.log(err)
     })
 
     return response
