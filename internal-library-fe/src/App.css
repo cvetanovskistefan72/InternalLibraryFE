@@ -4,6 +4,7 @@
 @import "./components/Modal/Modal.css";
 @import "./components/Modal/ModalComponents/ModalComponents.css";
 @import "./components/Create/CreateResource.css";
+@import './css/Loading.css';
 
 .btn:hover {
   background-color: white;

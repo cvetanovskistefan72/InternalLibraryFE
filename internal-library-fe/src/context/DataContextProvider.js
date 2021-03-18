@@ -5,8 +5,8 @@ export const DataContext = createContext()
 const DataContextProvider = (props) => {
     const [data, setData] = useState([])
 
-    const getData = async () => {
-        await getDataApi().then(({data}) => {
+    const getData = async (search) => {
+        await getDataApi(search).then(({data}) => {
             setData(data)
         }).catch((err) => {
             console.log(err)
@@ -15,7 +15,8 @@ const DataContextProvider = (props) => {
     
     const values = {
         data,
-        getData
+        getData,
+        setData
     }
     return (
         <DataContext.Provider value={values}>

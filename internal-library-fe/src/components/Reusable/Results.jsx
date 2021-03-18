@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Results = () => {
+const Results = ({results,pages}) => {
     return (
         <div className="results">
-            <span className="results-badge" >20 results / 5 pages</span>
+            <span className="results-badge" >{results} results / {pages} pages</span>
         </div>
     )
 }

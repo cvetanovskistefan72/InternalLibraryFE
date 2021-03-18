@@ -11,6 +11,15 @@
     padding: 5px;
      
 }
+
+.resources-page-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px
+    
+  }
  
 .btn-group button{
     margin:3px
@@ -20,5 +29,18 @@
     width: 20px;
     height: 20px;
 }
+.resources-select{
+    width: 200px;
+    margin-bottom:20px!important
+}
+#resources-select{
+   
+    border-bottom: none;
+ }
+ 
+ #resources-select:focus {
+   border-bottom: none!important;
+   box-shadow: none!important;
+ }
  
  

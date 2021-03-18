@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { URL } from '../config/config'
 
-export const getDataApi = async () => {
+export const getDataApi = async (search) => {
    let response = {}
-    await axios.get(`${URL}/resources`)
+    await axios.get(`${URL}/resources/search?Text=${search.trim()}`)
         .then((resp) => {
             response=resp
         }).catch((err) => {

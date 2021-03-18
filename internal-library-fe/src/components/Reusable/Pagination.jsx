@@ -1,17 +1,55 @@
-import React from 'react'
+import React from "react";
+import { defaultResourceSize } from "../../config/config";
 
-const Pagination = () => {
-    return (
-        <ul className="pagination">
-            <li className="disabled"><a href="#!"><i className="material-icons">chevron_left</i></a></li>
-            <li style={{ backgroundColor:'#145a32',color:'white'}} className="active"><a href="#!">1</a></li>
-            <li className="waves-effect"><a href="#!">2</a></li>
-            <li className="waves-effect"><a href="#!">3</a></li>
-            <li className="waves-effect"><a href="#!">4</a></li>
-            <li className="waves-effect"><a href="#!">5</a></li>
-            <li className="waves-effect"><a href="#!"><i className="material-icons">chevron_right</i></a></li>
-        </ul>
-    )
+const Pagination = ({ dataLength, page, setPage }) => {
+  const paginationlength = makeList(dataLength);
+  console.log(page);
+  return (
+    <ul className="pagination">
+        
+      {page > 0 && (
+        <li onClick={() => setPage(page - 1)}>
+          <a href="#!">
+            <i className="material-icons">chevron_left</i>
+          </a>
+        </li>
+      )}
+
+      {paginationlength.map((index) => {
+        return (
+          <li
+            key={index}
+            style={
+              ({ margin: "2px" },
+              { backgroundColor: page === index ? "#1b5e20" : "white" })
+            }
+            className="waves-effect"
+            onClick={() => setPage(index)}
+          >
+            <a style={{ color: page === index ? "white" : "black" }}>
+              {index + 1}
+            </a>
+          </li>
+        );
+      })}
+
+      {page < Math.floor(dataLength / defaultResourceSize) && (
+        <li onClick={() => setPage(page + 1)} className="waves-effect">
+          <a>
+            <i className="material-icons">chevron_right</i>
+          </a>
+        </li>
+      )}
+
+    </ul>
+  );
+};
+
+export default Pagination;
+function makeList(dataLength) {
+  let list = [];
+  for (let i = 0; i < Math.ceil(dataLength / defaultResourceSize); i++) {
+    list.push(i);
+  }
+  return list;
 }
-
-export default Pagination

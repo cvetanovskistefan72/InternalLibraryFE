@@ -42,3 +42,15 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+.search{
+  width: 400px;
+  margin: 5px
+}
+
+.search-btn{
+  margin:5px
+}
+.cancel-btn{
+  margin:5px
+}
+ 

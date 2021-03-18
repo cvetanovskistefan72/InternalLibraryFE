@@ -12,6 +12,8 @@ import {
   faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../Reusable/Tooltip";
+import Loading from "../Reusable/Loading";
+
 
 const ResourcesTable = ({
   data,
@@ -20,6 +22,7 @@ const ResourcesTable = ({
   setDetailsModal,
   setResource,
   setEditModal,
+  loading,
 }) => {
   const colorType = (res) => {
     let type;
@@ -39,17 +42,25 @@ const ResourcesTable = ({
     return type;
   };
 
+ 
+
+  if (!data.length && loading) {
+    return <div className="loading"><Loading/></div>;
+  }
+
+  if (!data.length && !loading) {
+    return <div className="loading"><h4>No Resources Found!</h4></div>;
+  }
+   
   return (
     <div className="resources-table">
       <table className="striped centered">
         <thead className="centered">
           <tr>
-            <th className="center" style={{ width: "5%" }}>
-              Id
-            </th>
-            <th>Type</th>
+          <th>Name</th>
+            <th style={{ width: "10%" }}>Type</th>
             <th></th>
-            <th>Name</th>
+            
             <th>Authors / Editors</th>
             <th>Description</th>
             <th>Quantity</th>
@@ -60,19 +71,16 @@ const ResourcesTable = ({
         <tbody>
           {data.map((res) => (
             <tr key={res.id}>
-              <td className="center" style={{ width: "5%" }}>
-                {res.id}
-              </td>
-              <td>{res.type}</td>
+              <td>{res.name}</td>
+              <td style={{ width: "10%" }}>{res.type}</td>
               <td>
                 <FontAwesomeIcon
                   style={{ color: colorType(res).color, fontSize: "1.5rem" }}
                   icon={colorType(res).icon}
                 />
               </td>
-              <td>{res.name}</td>
+               
               <td style={{ width: "20%" }}>
-                {" "}
                 {res.authors.map((author) => (
                   <span
                     style={{ margin: "1px" }}
