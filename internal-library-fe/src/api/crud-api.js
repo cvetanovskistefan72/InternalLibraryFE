@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { URL } from '../config/config'
 
-export const getDataApi = async (search) => {
+export const getDataApi = async (search,type) => {
    let response = {}
-    await axios.get(`${URL}/resources/search?Text=${search.trim()}`)
+    await axios.get(`${URL}/resources/search?Text=${search.trim()}&Type=${type === "All"?"":type}`)
         .then((resp) => {
             response=resp
         }).catch((err) => {

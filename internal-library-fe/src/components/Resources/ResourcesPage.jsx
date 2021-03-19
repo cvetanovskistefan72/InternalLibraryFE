@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   defaultResourceSize,
   emptySearch,
+  emptyType,
+  defaultStratingPage,
   RESOURCES_PAGE_ID,
 } from "../../config/config";
 import { AuthorsContext } from "../../context/AuthorsContextProvider";
@@ -42,27 +44,30 @@ const ResourcesPage = () => {
   const [cancel, setCancel] = useState(false);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
-  const [type, setType] = useState("");
+  const [type, setType] = useState("All");
   useEffect(() => {
-    getData(emptySearch);
+    getData(emptySearch,emptyType);
     getAuthors();
     setActiveNavLink(RESOURCES_PAGE_ID);
     return () => setData([]);
   }, []);
   const handleSubmit = (e) => {
+  
     e.preventDefault();
     if (search.trim()) {
-      getData(search);
+      
       setCancel(true);
       setLoading(false);
-      setSearch("");
+      setPage(defaultStratingPage)
+      getData(search,type);
     }
   };
 
   const cancelSearch = () => {
-    getData(emptySearch);
+    getData(emptySearch,emptyType);
     setCancel(false);
-    setSearch("");
+    setSearch(emptySearch);
+    setType("All")
   };
   const selectArray = ["Book", "CD", "Magazine", "Video Tape"];
   const paginatedData = data.slice(
@@ -93,10 +98,14 @@ const ResourcesPage = () => {
             labelId="demo-simple-select-outlined-label"
             id="demo-simple-select-outlined"
             value={type || "All"}
-            // onChange={handleChange}
+            onChange={(e)=>{
+              setType(e.target.value)
+              setPage(defaultStratingPage)
+              getData(search,e.target.value)
+            }}
             label="Select Type"
           >
-              <MenuItem onClick={()=>{setType("")}} value="All">All</MenuItem>
+              <MenuItem onClick={()=>{setType("All")}} value="All">All</MenuItem>
               {
                   selectArray.map((item)=><MenuItem key={item} onClick={()=>{setType(item)}} value={item}>{item}</MenuItem>)
               }

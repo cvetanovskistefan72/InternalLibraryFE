@@ -15,6 +15,19 @@ const SeeDetails = ({ detailsModal, setDetailsModal, resource }) => {
             <h5>{resource.name}</h5>
             <br />
             <p>{resource.description}</p>
+            <br/>
+         
+           {resource.authors.map((author) => (
+                  <span
+                    style={{ margin: "1px" }}
+                    key={author.id}
+                    class="new badge blue"
+                    data-badge-caption={author.name}
+                  ></span>
+                ))}
+         
+            <br />
+            <br />
             <br />
             <h6>{resource.quantity} items left</h6>
           </div>

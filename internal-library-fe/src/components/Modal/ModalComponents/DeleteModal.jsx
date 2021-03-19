@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { deleteResource } from "../../../api/crud-api";
 import CloseModalButton from "../../Reusable/CloseModalButton";
+import { emptySearch, emptyType } from "../../../config/config";
 
 const DeleteModalComponent = ({
   deleteModal,
@@ -24,7 +25,7 @@ const DeleteModalComponent = ({
         <button
           onClick={async () => {
             await deleteResource(deleteId);
-            await getData();
+            await getData(emptySearch,emptyType);
             setDeleteModal(false);
           }}
           className="btn delete"
