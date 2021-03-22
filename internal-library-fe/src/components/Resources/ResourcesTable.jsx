@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTrash,
@@ -23,6 +23,11 @@ const ResourcesTable = ({
   setResource,
   setEditModal,
   loading,
+  borrowed,
+  getBorrowed,
+  handleReturn,
+  handleBorrowed
+
 }) => {
   const colorType = (res) => {
     let type;
@@ -42,25 +47,34 @@ const ResourcesTable = ({
     return type;
   };
 
- 
+  
 
   if (!data.length && loading) {
-    return <div className="loading"><Loading/></div>;
+    return (
+      <div className="loading">
+        <Loading />
+      </div>
+    );
   }
 
   if (!data.length && !loading) {
-    return <div className="loading"><h4>No Resources Found!</h4></div>;
+    return (
+      <div className="loading">
+        <h4>No Resources Found!</h4>
+      </div>
+    );
   }
-   
+
+  console.log(borrowed);
   return (
     <div className="resources-table">
       <table className="striped centered">
         <thead className="centered">
           <tr>
-          <th>Name</th>
+            <th>Name</th>
             <th style={{ width: "10%" }}>Type</th>
             <th></th>
-            
+
             <th>Authors / Editors</th>
             <th>Description</th>
             <th>Quantity</th>
@@ -79,7 +93,7 @@ const ResourcesTable = ({
                   icon={colorType(res).icon}
                 />
               </td>
-               
+
               <td style={{ width: "20%" }}>
                 {res.authors.map((author) => (
                   <span
@@ -105,10 +119,33 @@ const ResourcesTable = ({
                     <FontAwesomeIcon icon={faInfo} />
                   </button>
 
-                  <button className="btn add tooltip">
-                    <Tooltip message="Borrow" />
-                    <FontAwesomeIcon icon={faPlus} />
-                  </button>
+                  {borrowed ? (borrowed.find((resource) => resource.id === res.id) ? (
+                    <button
+                      onClick={() => handleReturn(res)}
+                      className="btn add tooltip"
+                    >
+                      <Tooltip message="Return" />
+                      <FontAwesomeIcon icon={faUndoAlt} />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleBorrowed(res)}
+                      className="btn add tooltip"
+                    >
+                      <Tooltip message="Borrow" />
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>
+                  )):null}
+
+                  {
+                    !borrowed ? ( <button
+                      onClick={() => handleBorrowed(res)}
+                      className="btn add tooltip"
+                    >
+                      <Tooltip message="Borrow" />
+                      <FontAwesomeIcon icon={faPlus} />
+                    </button>) : null
+                  }
 
                   <button
                     onClick={() => {
@@ -142,3 +179,4 @@ const ResourcesTable = ({
 };
 
 export default ResourcesTable;
+

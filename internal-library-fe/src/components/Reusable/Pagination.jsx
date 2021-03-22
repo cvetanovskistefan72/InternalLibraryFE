@@ -33,7 +33,7 @@ const Pagination = ({ dataLength, page, setPage }) => {
         );
       })}
 
-      {page < Math.floor(dataLength / defaultResourceSize) && (
+      {page+1 < dataLength / defaultResourceSize && (
         <li onClick={() => setPage(page + 1)} className="waves-effect">
           <a>
             <i className="material-icons">chevron_right</i>

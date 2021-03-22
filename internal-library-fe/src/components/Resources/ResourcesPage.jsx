@@ -22,6 +22,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
+import { BorrowedContext } from "../../context/BorrwedContextProvider";
+
 
 const ResourcesPage = () => {
   //CONTEXT
@@ -36,6 +38,8 @@ const ResourcesPage = () => {
   } = useContext(ModalContext);
   const { setActiveNavLink } = useContext(NavbarContext);
   const { getAuthors } = useContext(AuthorsContext);
+  const { borrowed,getBorrowed,handleReturn,handleBorrowed} = useContext(BorrowedContext)
+
 
   //STATE
   const [deleteId, setDeleteId] = useState();
@@ -49,6 +53,9 @@ const ResourcesPage = () => {
     getData(emptySearch,emptyType);
     getAuthors();
     setActiveNavLink(RESOURCES_PAGE_ID);
+    const user = JSON.parse(localStorage.getItem("userData"))
+    getBorrowed(user.homeId)
+
     return () => setData([]);
   }, []);
   const handleSubmit = (e) => {
@@ -152,6 +159,10 @@ const ResourcesPage = () => {
           setResource={setResource}
           setEditModal={setEditModal}
           loading={loading}
+          borrowed={borrowed}
+          getBorrowed={getBorrowed}
+          handleReturn={handleReturn}
+          handleBorrowed={handleBorrowed}
         />
       </div>
       <div className="resources-page-bottom">

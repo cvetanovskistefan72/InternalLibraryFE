@@ -59,3 +59,29 @@ export const getAuthorsData= async ()=>{
 
     return response
 }
+
+export const postBorrowed = async(borrowed) =>{
+    await axios.post(`${URL}/borrowed`,borrowed)
+    .then((resp)=>{
+        console.log(resp)
+    })
+}
+
+export const putReturn = async(returned) =>{
+    await axios.put(`${URL}/borrowed/return`,returned)
+    .then((resp)=>{
+        console.log(resp)
+    })
+}
+
+export const getBorrowedData = async (userId) => {
+    let response;
+    await axios.get(`${URL}/borrowed/${userId}`)
+    .then((resp)=>{
+        response=resp
+    }).catch((err)=>{
+        console.log(err)
+    })
+
+    return response
+}
