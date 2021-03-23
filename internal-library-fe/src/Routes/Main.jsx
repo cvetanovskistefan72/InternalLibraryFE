@@ -21,7 +21,7 @@ const Main = () => {
           })
           .then((response) => {
             // accesss token
-
+            console.log(response)
             const data ={ token: response.accessToken,
                          homeId: response.account.localAccountId,
                          name: response.account.name,

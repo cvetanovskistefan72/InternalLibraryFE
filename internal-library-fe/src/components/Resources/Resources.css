@@ -29,6 +29,9 @@
     width: 20px;
     height: 20px;
 }
+.search-btn{
+    background-color: #01579b;
+}
 .resources-select{
     width: 200px;
     margin-bottom:20px!important

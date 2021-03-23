@@ -21,7 +21,7 @@ const Pagination = ({ dataLength, page, setPage }) => {
             key={index}
             style={
               ({ margin: "2px" },
-              { backgroundColor: page === index ? "#1b5e20" : "white" })
+              { backgroundColor: page === index ? "#01579b" : "white" })
             }
             className="waves-effect"
             onClick={() => setPage(index)}

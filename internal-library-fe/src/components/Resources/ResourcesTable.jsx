@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "../Reusable/Tooltip";
 import Loading from "../Reusable/Loading";
-
+import { colorType } from "../../helpers/helpers";
 
 const ResourcesTable = ({
   data,
@@ -26,29 +26,8 @@ const ResourcesTable = ({
   borrowed,
   getBorrowed,
   handleReturn,
-  handleBorrowed
-
+  handleBorrowed,
 }) => {
-  const colorType = (res) => {
-    let type;
-    if (res.type === "Book") {
-      type = { icon: faBook, color: "#b71c1c" };
-    }
-    if (res.type === "CD") {
-      type = { icon: faCompactDisc, color: "#01579b" };
-    }
-    if (res.type === "Magazine") {
-      type = { icon: faNewspaper, color: "#1b5e20" };
-    }
-    if (res.type === "Video Tape") {
-      type = { icon: faTape, color: "#f57f17" };
-    }
-
-    return type;
-  };
-
-  
-
   if (!data.length && loading) {
     return (
       <div className="loading">
@@ -119,33 +98,9 @@ const ResourcesTable = ({
                     <FontAwesomeIcon icon={faInfo} />
                   </button>
 
-                  {borrowed ? (borrowed.find((resource) => resource.id === res.id) ? (
-                    <button
-                      onClick={() => handleReturn(res)}
-                      className="btn add tooltip"
-                    >
-                      <Tooltip message="Return" />
-                      <FontAwesomeIcon icon={faUndoAlt} />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleBorrowed(res)}
-                      className="btn add tooltip"
-                    >
-                      <Tooltip message="Borrow" />
-                      <FontAwesomeIcon icon={faPlus} />
-                    </button>
-                  )):null}
+                  {borrowOrReturn(borrowed, res, handleReturn, handleBorrowed)}
 
-                  {
-                    !borrowed ? ( <button
-                      onClick={() => handleBorrowed(res)}
-                      className="btn add tooltip"
-                    >
-                      <Tooltip message="Borrow" />
-                      <FontAwesomeIcon icon={faPlus} />
-                    </button>) : null
-                  }
+                  {checkEmptyBorrowed(borrowed, handleBorrowed, res)}
 
                   <button
                     onClick={() => {
@@ -180,3 +135,27 @@ const ResourcesTable = ({
 
 export default ResourcesTable;
 
+function checkEmptyBorrowed(borrowed, handleBorrowed, res) {
+  return !borrowed ? (
+    <button onClick={() => handleBorrowed(res)} className="btn add tooltip">
+      <Tooltip message="Borrow" />
+      <FontAwesomeIcon icon={faPlus} />
+    </button>
+  ) : null;
+}
+
+function borrowOrReturn(borrowed, res, handleReturn, handleBorrowed) {
+  return borrowed ? (
+    borrowed.find((resource) => resource.id === res.id) ? (
+      <button onClick={() => handleReturn(res)} className="btn add tooltip">
+        <Tooltip message="Return" />
+        <FontAwesomeIcon icon={faUndoAlt} />
+      </button>
+    ) : (
+      <button onClick={() => handleBorrowed(res)} className="btn add tooltip">
+        <Tooltip message="Borrow" />
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
+    )
+  ) : null;
+}

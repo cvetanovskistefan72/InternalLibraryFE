@@ -1,0 +1,71 @@
+.home-page {
+  padding: 20px;
+  margin-top: 50px;
+}
+.home-page-empty{
+    display: flex;
+    justify-content: center;
+}
+.card-paragraph {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.card-title {
+  display: flex !important;
+  justify-content: space-between;
+  height: 100px;
+}
+.card-title-type {
+  font-size: 0.7rem;
+
+  padding: 10px;
+}
+.card-title h5{
+    font-weight: bolder;
+}
+
+.card-authors {
+  height: 50px;
+  margin: 10px;
+  margin-top: 20px;
+}
+.card-action{
+    background-color: black;
+}
+.card {
+  padding: 0;
+}
+.header {
+  padding: 30px;
+  height: 600px;
+  text-align: center;
+  background-image: url("../../img/landing.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
+}
+
+.header h1 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-family: "Great Vibes", cursive;
+  font-size: 4rem;
+  color: #fff;
+  font-weight: bolder;
+  margin-top: 150px;
+}
+.header-link button {
+  background-color: white;
+  color: #01579b;
+}
+.header-link .btn:hover {
+  color: #01579b;
+}
+
+@media screen and (max-width: 600px) {
+  .header h1 {
+    margin-top: 80px;
+  }
+}

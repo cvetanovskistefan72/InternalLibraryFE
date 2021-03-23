@@ -49,6 +49,7 @@ const ResourcesPage = () => {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [type, setType] = useState("All");
+  
   useEffect(() => {
     getData(emptySearch,emptyType);
     getAuthors();
@@ -90,9 +91,9 @@ const ResourcesPage = () => {
             setSearch={setSearch}
             label="Search by Name"
           />
-          <button className="btn add search-btn">Search</button>
+          <button className="btn search-btn">Search</button>
           {cancel && (
-            <button onClick={cancelSearch} className="btn cancel  cancel-btn">
+            <button onClick={cancelSearch} className="btn cancel cancel-btn">
               <FontAwesomeIcon icon={faTimesCircle} />
             </button>
           )}

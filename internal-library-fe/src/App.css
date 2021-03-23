@@ -6,6 +6,7 @@
 @import "./components/Create/CreateResource.css";
 @import './css/Loading.css';
 @import './components/SignIn/SignIn.css';
+@import './components/Home/HomePage.css';
 
 .btn:hover {
   background-color: white;
