@@ -82,7 +82,6 @@ const EditResource = ({ getData,editModal, setEditModal, resource }) => {
               value={name}
               id="name"
               type="text"
-              className="validate"
               clicked
             />
             <label className={resource.name && "active"} for="name">Name</label>
@@ -108,7 +107,6 @@ const EditResource = ({ getData,editModal, setEditModal, resource }) => {
               value={quantity}
               id="quantity"
               type="number"
-              class="validate"
             />
             <label className={resource.quantity && "active"} for="quantity">Quantity</label>
             <div className="error-message">

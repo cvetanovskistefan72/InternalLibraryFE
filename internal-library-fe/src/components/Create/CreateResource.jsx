@@ -77,7 +77,7 @@ const CreateResource = ({ history }) => {
               value={name}
               id="name"
               type="text"
-              class="validate"
+             
             />
             <label for="name">Name</label>
             <div className="error-message">
@@ -102,7 +102,7 @@ const CreateResource = ({ history }) => {
               value={quantity}
               id="quantity"
               type="number"
-              class="validate"
+              
             />
             <label for="quantity">Quantity</label>
             <div className="error-message">

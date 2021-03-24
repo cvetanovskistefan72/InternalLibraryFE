@@ -1,10 +1,12 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import {  getBorrowedData, postBorrowed, putReturn } from "../api/crud-api";
-
+import { emptySearch, emptyType } from "../config/config";
+import {DataContext} from './DataContextProvider'
 export const BorrowedContext = createContext();
 
 const BorrowedContextProvider = (props) => {
   const [borrowed,setBorrowed] = useState([]);
+  const { getData } = useContext(DataContext)
 
   const getBorrowed = async (userId) => {
     await getBorrowedData(userId)
@@ -26,6 +28,7 @@ const BorrowedContextProvider = (props) => {
 
     await postBorrowed(borrowed);
     await getBorrowed(userId.homeId)
+    await getData(emptySearch,emptyType);
 
   };
 
@@ -39,6 +42,7 @@ const BorrowedContextProvider = (props) => {
 
     await putReturn(returned);
     await getBorrowed(userId.homeId)
+    await getData(emptySearch,emptyType);
   };
 
   const getDate= ()=>{

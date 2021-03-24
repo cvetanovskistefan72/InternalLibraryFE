@@ -8,7 +8,6 @@ const Search = ({ search, setSearch ,label}) => {
         value={search}
         id={label}
         type="text"
-        class="validate"
       />
       <label for={label}>{label}</label>
     </div>

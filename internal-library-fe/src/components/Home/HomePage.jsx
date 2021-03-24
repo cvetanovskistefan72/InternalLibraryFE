@@ -59,6 +59,7 @@ const HomePage = () => {
                         </div>
 
                         <p className="card-paragraph">{resource.description}</p>
+                       
                         <div className="card-authors">
                           {resource.authors.map((author) => (
                             <span

@@ -34,17 +34,9 @@ const SeeDetails = ({ detailsModal, setDetailsModal, resource }) => {
         </div>
         <div class="card-action">
           <button onClick={() => setDetailsModal(false)} className="btn cancel">
-            Cancel
+            Close
           </button>
-          <button
-            onClick={async () => {
-              setDetailsModal(false);
-            }}
-            className="btn add"
-          >
-            <span>Borrow </span>
-            <FontAwesomeIcon icon={faPlus} />
-          </button>
+        
         </div>
       </div>
     </div>

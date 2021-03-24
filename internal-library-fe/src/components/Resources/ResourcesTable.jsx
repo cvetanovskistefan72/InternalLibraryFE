@@ -152,7 +152,7 @@ function borrowOrReturn(borrowed, res, handleReturn, handleBorrowed) {
         <FontAwesomeIcon icon={faUndoAlt} />
       </button>
     ) : (
-      <button onClick={() => handleBorrowed(res)} className="btn add tooltip">
+      <button disabled={res.quantity===0} onClick={() => handleBorrowed(res)} className="btn add tooltip">
         <Tooltip message="Borrow" />
         <FontAwesomeIcon icon={faPlus} />
       </button>
