@@ -15,8 +15,10 @@ import { PublicClientApplication } from "@azure/msal-browser";
 import { msalConfig } from "./authConfig";
 import SignIn from "./components/SignIn/SignIn";
 import BorrowedContextProvider from "./context/BorrwedContextProvider";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import UsersContextProvider from "./context/UsersContextProvider";
+import RoleContextProvider from "./context/RoleContextProvider";
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
         <NavbarContextProvider>
           <AuthorsContextProvider>
             <BorrowedContextProvider>
+              <UsersContextProvider>
+                <RoleContextProvider>
           <BrowserRouter>
           <MsalProvider instance={msalInstance}>
           <ToastContainer
@@ -54,6 +58,8 @@ function App() {
             </AuthenticatedTemplate>
             </MsalProvider>
           </BrowserRouter>
+          </RoleContextProvider>
+              </UsersContextProvider>
           </BorrowedContextProvider>
           </AuthorsContextProvider>
         </NavbarContextProvider>

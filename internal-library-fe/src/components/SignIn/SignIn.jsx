@@ -1,8 +1,8 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "../../authConfig";
 import Logo from "../../img/logo.png";
-const SignIn = () => {
+const SignIn = (props) => {
   const { instance } = useMsal();
   return (
     <div className="sign-in">

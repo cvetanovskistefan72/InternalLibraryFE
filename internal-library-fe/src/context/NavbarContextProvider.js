@@ -9,14 +9,14 @@ export const NavbarContext = createContext()
 const NavLinks = [
     {
         id: 1,
-        path: "/create",
-        icon: faPlusSquare,
+        path: "/",
+        icon: faHome,
         active: true
     },
     {
         id: 2,
-        path: "/",
-        icon: faHome,
+        path: "/create",
+        icon: faPlusSquare,
         active: false
     },
     {

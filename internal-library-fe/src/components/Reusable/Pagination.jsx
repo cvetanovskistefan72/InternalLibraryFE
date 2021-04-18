@@ -3,7 +3,7 @@ import { defaultResourceSize } from "../../config/config";
 
 const Pagination = ({ dataLength, page, setPage }) => {
   const paginationlength = makeList(dataLength);
-  console.log(page);
+ 
   return (
     <ul className="pagination">
         

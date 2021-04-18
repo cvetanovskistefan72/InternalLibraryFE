@@ -3,7 +3,7 @@ import React from 'react'
 const Tooltip = ({message}) => {
     return (
         
-        <span class="tooltiptext">{message}</span>
+        <span className="tooltiptext">{message}</span>
       
     )
 }

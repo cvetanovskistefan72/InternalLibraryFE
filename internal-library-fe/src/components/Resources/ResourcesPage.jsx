@@ -10,6 +10,7 @@ import { AuthorsContext } from "../../context/AuthorsContextProvider";
 import { DataContext } from "../../context/DataContextProvider";
 import { ModalContext } from "../../context/ModalContextProvider";
 import { NavbarContext } from "../../context/NavbarContextProvider";
+import { RoleContext } from "../../context/RoleContextProvider";
 import Modal from "../Modal/Modal";
 import DeleteModal from "../Modal/ModalComponents/DeleteModal";
 import EditResource from "../Modal/ModalComponents/EditResource";
@@ -20,7 +21,6 @@ import Search from "../Reusable/Search";
 import ResourcesTable from "./ResourcesTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import { FormControl, InputLabel, MenuItem, Select, TextField } from "@material-ui/core";
 import { BorrowedContext } from "../../context/BorrwedContextProvider";
 
@@ -39,6 +39,7 @@ const ResourcesPage = () => {
   const { setActiveNavLink } = useContext(NavbarContext);
   const { getAuthors } = useContext(AuthorsContext);
   const { borrowed,getBorrowed,handleReturn,handleBorrowed} = useContext(BorrowedContext)
+  const { role } = useContext(RoleContext)
 
 
   //STATE
@@ -56,9 +57,10 @@ const ResourcesPage = () => {
     setActiveNavLink(RESOURCES_PAGE_ID);
     const user = JSON.parse(localStorage.getItem("userData"))
     getBorrowed(user.homeId)
-
     return () => setData([]);
   }, []);
+
+
   const handleSubmit = (e) => {
   
     e.preventDefault();
@@ -164,6 +166,7 @@ const ResourcesPage = () => {
           getBorrowed={getBorrowed}
           handleReturn={handleReturn}
           handleBorrowed={handleBorrowed}
+          role={role}
         />
       </div>
       <div className="resources-page-bottom">

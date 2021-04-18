@@ -2,14 +2,14 @@ import React from "react";
 
 const Search = ({ search, setSearch ,label}) => {
   return (
-    <div class="input-field search">
+    <div className="input-field search">
       <input
         onChange={(e) => setSearch(e.target.value)}
         value={search}
         id={label}
         type="text"
       />
-      <label for={label}>{label}</label>
+      <label htmlFor={label}>{label}</label>
     </div>
   );
 };

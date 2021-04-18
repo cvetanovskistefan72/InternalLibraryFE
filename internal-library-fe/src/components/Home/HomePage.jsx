@@ -27,7 +27,7 @@ const HomePage = () => {
   console.log(borrowed);
   return (
     <div className="">
-      <div class="header">
+      <div className="header">
         <h1>Welcome to Internal Library</h1>
         <Link to="/resources" className="header-link">
           <button className="btn">
@@ -38,14 +38,14 @@ const HomePage = () => {
       </div>
 
       <div className="home-page container">
-        <div class="row">
+        <div className="row">
           {borrowed
             && borrowed.map((resource) => {
                 return (
-                  <div key={resource.id} class="col s12 m12 l4">
+                  <div key={resource.id} className="col s12 m12 l4">
                     <div className="card z-depth-2">
-                      <div class="card-content">
-                        <div class="card-title">
+                      <div className="card-content">
+                        <div className="card-title">
                           <h5> {resource.name}</h5>
                           <span
                             style={{
@@ -53,7 +53,7 @@ const HomePage = () => {
                               backgroundColor: "#01579b",
                               fontWeight: "bold",
                             }}
-                            class="new badge card-title-type"
+                            className="new badge card-title-type"
                             data-badge-caption={resource.type}
                           ></span>
                         </div>
@@ -65,13 +65,13 @@ const HomePage = () => {
                             <span
                               style={{ margin: "1px" }}
                               key={author.id}
-                              class="new badge blue"
+                              className="new badge blue"
                               data-badge-caption={author.name}
                             ></span>
                           ))}
                         </div>
                       </div>
-                      <div class="card-action">
+                      <div className="card-action">
                         <button
                           onClick={() => handleReturn(resource)}
                           className="btn edit tooltip"

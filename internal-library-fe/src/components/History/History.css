@@ -1,0 +1,13 @@
+.history-table thead{
+    background-color: #222222;
+    color: white;
+}
+.history-table{
+    margin-top: 100px;
+}
+
+.history-page-bottom{
+    display: flex!important;
+    justify-content:space-between;
+}
+ 

@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-import {getDataApi} from '../api/crud-api'
+import {getDataApi, getHistoryApi} from '../api/crud-api'
 export const DataContext = createContext()
 
 const DataContextProvider = (props) => {
@@ -12,11 +12,23 @@ const DataContextProvider = (props) => {
             console.log(err)
         })
     }
+
+    const getHistory = async () =>{
+        await getHistoryApi().then(({data})=>{
+            const reversedData = data
+            reversedData.reverse()
+            setData(reversedData)
+        }).catch((err)=>{
+            console.log(err)
+        })
+
+    }
     
     const values = {
         data,
         getData,
-        setData
+        setData,
+        getHistory
     }
     return (
         <DataContext.Provider value={values}>

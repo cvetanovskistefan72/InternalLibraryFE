@@ -4,13 +4,15 @@ import { NavbarContext } from "../../context/NavbarContextProvider";
 import TextField from "@material-ui/core/TextField";
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { createResource } from "../../api/crud-api";
 import { AuthorsContext } from "../../context/AuthorsContextProvider";
+import { RoleContext } from "../../context/RoleContextProvider";
 
 const CreateResource = ({ history }) => {
   const { setActiveNavLink } = useContext(NavbarContext);
   const { authors: authorsData, getAuthors } = useContext(AuthorsContext)
+  const { role } = useContext(RoleContext)
 
   useEffect(() => {
     setActiveNavLink(CREATE_PAGE_ID);
@@ -46,6 +48,8 @@ const CreateResource = ({ history }) => {
     .map((newAuthor)=>{return {name:newAuthor}})
     return [...oldAuthors,...newAuthors]
   }
+
+  if(role!=="Admin") return <Redirect to="/" />
  
   return (
     <form onSubmit={handleSubmit} className="create-resource">
@@ -71,7 +75,7 @@ const CreateResource = ({ history }) => {
             <span>{error && error.type}</span>
           </div>
 
-          <div class="input-field">
+          <div className="input-field">
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
@@ -79,24 +83,24 @@ const CreateResource = ({ history }) => {
               type="text"
              
             />
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <div className="error-message">
               <span>{error && error.name}</span>
             </div>
           </div>
-          <div class="input-field">
+          <div className="input-field">
             <textarea
               onChange={(e) => setDescription(e.target.value)}
               value={description}
               id="description"
-              class="materialize-textarea"
+              className="materialize-textarea"
             ></textarea>
-            <label for="description">Description</label>
+            <label htmlFor="description">Description</label>
             <div className="error-message">
               <span>{error && error.description}</span>
             </div>
           </div>
-          <div class="input-field">
+          <div className="input-field">
             <input
               onChange={(e) => setQuantity(e.target.value)}
               value={quantity}
@@ -104,7 +108,7 @@ const CreateResource = ({ history }) => {
               type="number"
               
             />
-            <label for="quantity">Quantity</label>
+            <label htmlFor="quantity">Quantity</label>
             <div className="error-message">
               <span>{error && error.quantity}</span>
             </div>

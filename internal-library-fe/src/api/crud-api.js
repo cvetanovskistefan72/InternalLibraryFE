@@ -19,6 +19,20 @@ export const getDataApi = async (search, type) => {
   return response;
 };
 
+export const getHistoryApi = async () => {
+  let response = {};
+  await axios
+    .get(
+      `${URL}/history`)
+    .then((resp) => {
+      response = resp;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return response;
+};
+
 export const deleteResource = async (id) => {
   await axios.delete(`${URL}/resources/${id}`)
     .then((resp) => {
@@ -48,7 +62,7 @@ export const editResource = async (resource) => {
   await axios
     .put(`${URL}/resources`, resource)
     .then((resp) => {
-      TOAST("Resource Created!", "info");
+      TOAST("Resource Edited!", "info");
     })
     .catch((error) => {
       response = error.response;
@@ -106,5 +120,33 @@ export const getBorrowedData = async (userId) => {
       TOAST("Error!", "error");
     });
 
+  return response;
+};
+
+
+export const addUser = async (user) => {
+ 
+  await axios
+    .post(`${URL}/users`,user)
+    .then((resp) => {
+     console.log(resp)
+    })
+    .catch((err) => {
+      TOAST("Error!", "error");
+    });
+}
+
+export const getUsersData = async () => {
+  let response;
+  await axios
+    .get(`${URL}/users`)
+    .then((resp) => {
+      response = resp;
+    })
+    .catch((err) => {
+      TOAST("Error!", "error");
+    });
+
+    console.log(response)
   return response;
 };
