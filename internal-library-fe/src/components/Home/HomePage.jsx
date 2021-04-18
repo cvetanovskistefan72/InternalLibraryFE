@@ -61,7 +61,7 @@ const HomePage = () => {
                         <p className="card-paragraph">{resource.description}</p>
                        
                         <div className="card-authors">
-                          {resource.authors.map((author) => (
+                          {resource.authors && resource.authors.map((author) => (
                             <span
                               style={{ margin: "1px" }}
                               key={author.id}

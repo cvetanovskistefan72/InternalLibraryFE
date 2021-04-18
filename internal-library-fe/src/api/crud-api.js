@@ -36,11 +36,10 @@ export const getHistoryApi = async () => {
 export const deleteResource = async (id) => {
   await axios.delete(`${URL}/resources/${id}`)
     .then((resp) => {
-      TOAST("Resource Deleted!", "success");
+      TOAST("You Deleted a Resource.If the resource is already borrowed, it could not be deleted", "success");
     })
     .catch((err) => {
-      console.log(err)
-      TOAST("Error!", "error");
+      TOAST("You Deleted a Resource.If the resource is already borrowed, it could not be deleted", "success");
     });
 };
 

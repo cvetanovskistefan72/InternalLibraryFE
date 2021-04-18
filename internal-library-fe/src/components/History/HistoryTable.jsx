@@ -3,7 +3,7 @@ import React from "react";
 import { colorType, processUserEmail } from "../../helpers/helpers";
 import Loading from "../Reusable/Loading";
 
-const HistoryTable = ({ loading, data,users }) => {
+const HistoryTable = ({ loading, data, users }) => {
   if (!data.length && loading) {
     return (
       <div style={{ marginTop: "100px" }} className="loading">
@@ -20,7 +20,7 @@ const HistoryTable = ({ loading, data,users }) => {
     );
   }
 
-  console.log(users)
+  console.log(users);
   return (
     <div className="history-table">
       <table className="striped centered">
@@ -53,7 +53,21 @@ const HistoryTable = ({ loading, data,users }) => {
                 </td>
                 <td>{history.borrowedDate}</td>
 
-                <td>{ history.userId && (processUserEmail(users,history.userId))}</td>
+                <td>
+                  <a
+                  
+                    onClick={() =>
+                      window.open(
+                        `mailto:${
+                          history.userId &&
+                          processUserEmail(users, history.userId)
+                        }`
+                      )
+                    }
+                  >
+                    {history.userId && processUserEmail(users, history.userId)}
+                  </a>{" "}
+                </td>
                 <td>
                   <span
                     style={{

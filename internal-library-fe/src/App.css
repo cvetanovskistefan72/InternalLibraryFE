@@ -53,3 +53,6 @@
 .input-field textarea:focus + label {
   color: #01579b !important;
 }
+a {
+  cursor: pointer;
+}
