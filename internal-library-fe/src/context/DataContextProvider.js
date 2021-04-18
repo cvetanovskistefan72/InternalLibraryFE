@@ -8,7 +8,7 @@ const DataContextProvider = (props) => {
     const getData = async (search,type) => {
         await getDataApi(search,type).then(({data}) => {
             const sortedData = data
-            sortedData.sort((a,b)=>a.name>b.name)
+            sortedData.sort((a,b)=>a.name.toLowerCase()>b.name.toLowerCase())
             setData(data)
         }).catch((err) => {
             console.log(err)
