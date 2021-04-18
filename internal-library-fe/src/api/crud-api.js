@@ -39,6 +39,7 @@ export const deleteResource = async (id) => {
       TOAST("Resource Deleted!", "success");
     })
     .catch((err) => {
+      console.log(err)
       TOAST("Error!", "error");
     });
 };
